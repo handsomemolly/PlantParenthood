@@ -1,3 +1,3 @@
 class Note < ApplicationRecord
-  belongs_to :userplant
+  belongs_to :user_plant
 end
