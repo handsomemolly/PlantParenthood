@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "users#new"
-  get '/signup' => 'users#new'
-  post '/signup' => 'users#create' 
+  post "/" => "users#create"
+  get "/home" => "users#show"
   
   resources :bookings
   resources :listings
@@ -9,10 +9,7 @@ Rails.application.routes.draw do
   resources :user_plants, only: [:new, :create]
   resources :users
 
-
   get "/login" =>  "sessions#new"
   post "/login" => "sessions#create"
-
-  get "/home" => "users#show"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_login
   skip_before_action :require_login, only: [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @sitters = User.sitters
   end
 
   def new
+    @user = User.new
   end
 
   def show
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.valid?
       session[:user_id] = @user.id
-      redirect_to user_path 
+      redirect_to home_path 
     else
       flash[:alert] = "Passwords do not match. Please try again"
       redirect_to root_path
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:users).permit(:name, :experience, :location, :password_digest)
+    params.require(:user).permit(:name, :experience, :location, :password)
   end
 
   def set_user
