@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
+  skip_before_action :require_login, only: [:new, :create]
 
   def index
     @sitters = User.sitters
@@ -37,5 +39,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_login
+    redirect_to login_path unless session.include? :name
   end
 end
