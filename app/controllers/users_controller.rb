@@ -15,7 +15,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    redirect_to user_path 
+    if @user.valid?
+      session[:user_id] = @user.id
+      redirect_to user_path 
+    else
+      flash[:alert] = "Passwords do not match. Please try again"
+      redirect_to root_path
+    end
   end
   
   def edit
