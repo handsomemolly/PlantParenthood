@@ -1,0 +1,12 @@
+<h2>This is your profile: </h2>
+<p>
+  <%= @user.name %>
+</p>
+Plants in your collection:
+<%= @user.user_plants.each do |p|%>
+  <%= "#{p.name} (#{p.latin_name})" %>
+  Type: <%= p.type %>
+  Needs: <% = p.difficulty %>
+<% end %>
+
+<%= button_to "Add a plant to your collection", user_plant_path, method: :get %>

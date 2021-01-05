@@ -1,0 +1,19 @@
+<%= form_with model: @user do |f|%>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <br>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <br>  
+  <br>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <br>
+  <br>
+  <%= f.label :experience_level %>
+  <%= f.select :experience, ["I dabble", "Green thumb", "Plant wizard"] %>
+  <br>
+  <br>
+  <%= f.submit "Get growin!" %>
+<% end %>
