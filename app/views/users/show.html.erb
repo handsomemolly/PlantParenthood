@@ -1,7 +1,6 @@
 <h2><%= "#{@user.name}'s Profile:"%></h2>
-<%= @user.experience %>
-<br>
-<%= @user.location %>
+<h4><%= @user.experience %></h4>
+<h5><%= @user.location %></h5>
 <br>
 <% if @user.plants.count == 0 %>
   <%= "No plants in your collection yet. Add a plant below!" %>
@@ -11,8 +10,20 @@
     <% @user.plants.each do |p|%>
       <p>
         <%= "#{p.name} (#{p.latin_name})" %>
+        <br>
         Type: <%= p.plant_type %>
+        <br>
         Needs: <%= p.difficulty %>
+        <br>
+
+        <% if @user.find_note.length == 0 %>
+          <%= link_to "Add a care note", new_note_path, method: :get %>
+        <% else %>
+          <% @user.find_note.each do |n| %>
+            <i><%= n.add_care %></i>
+          <% end %>
+        <% end %>
+
       </p>
     <% end %>
 

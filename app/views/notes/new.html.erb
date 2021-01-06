@@ -1,0 +1,9 @@
+<h2>Add a note about the care of this plant:</h2>
+<h3><%= "~ plant name ~" %></h3>
+
+<%= form_with model: @note do |f| %>
+  <%= f.label :add_care %>
+  <%= f.text_area :add_care %>
+  <%= f.collection_select :user_plant_id, @user_plants, :id, :id %>
+  <%= f.submit "So needy." %>
+<% end %>
