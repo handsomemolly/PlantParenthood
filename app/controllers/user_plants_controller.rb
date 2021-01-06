@@ -5,7 +5,6 @@ class UserPlantsController < ApplicationController
   end
 
   def create
-    byebug
     # @user_plant = UserPlant.create(user_id: params[:user_id], plant_id: params[:plant_id])
     userplant_params[:plant_ids].each {|plant_id| UserPlant.create(user_id: @user.id, plant_id: plant_id)}
   

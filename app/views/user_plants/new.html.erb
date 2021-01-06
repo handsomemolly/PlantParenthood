@@ -1,6 +1,4 @@
-#collection check box for Plants.all 
-#user can add all their plants
-
+<h2>Select any and all plants you own: </h2>
 <%= form_with url: user_plants_path do |f|%>
     <%= f.collection_check_boxes :plant_ids, @plants, :id, :name, include_hidden: false %>
     <%= f.submit %>

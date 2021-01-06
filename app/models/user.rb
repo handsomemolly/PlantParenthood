@@ -8,4 +8,7 @@ class User < ApplicationRecord
   def self.sitters
     User.all.map {|user| user.user_plants.length == 0 || user.user_plants == nil }
   end
+
+  def convert_experience
+  end
 end

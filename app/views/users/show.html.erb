@@ -9,13 +9,15 @@
   <% else %>
     <%= "Plants in your collection:" %>
     <% @user.plants.each do |p|%>
-      <%= "#{p.name} (#{p.latin_name})" %>
-      Type: <%= p.plant_type %>
-      Needs: <%= p.difficulty %>
+      <p>
+        <%= "#{p.name} (#{p.latin_name})" %>
+        Type: <%= p.plant_type %>
+        Needs: <%= p.difficulty %>
+      </p>
     <% end %>
 
 <% end %>
 <br>
 <div>
-<%= button_to "Add a plant to your collection", new_user_plant_path, method: :get %>
+<%= button_to "Add plants to your collection", new_user_plant_path, method: :get %>
 <div>
