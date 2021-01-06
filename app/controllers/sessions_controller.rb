@@ -1,29 +1,23 @@
 class SessionsController < ApplicationController
-    # before_action :require_login
+    skip_before_action :require_login, only: [:new, :create]
     
     def new
     end
 
     def create 
-        @user = User.find_by(name: params[:user][:name])
-        if @user
-            return head(:forbidden) unless @user.authenticate(params[:user][:password])
-            session[:user_id] = @user.id
+        @user = User.find_by(name: params[:session][:name])
+        
+        if @user && @user.authenticate(params[:session][:password])
+            login_user(@user.id)
             redirect_to @user
         else
-            flash[:alert] = "Please enter correct username and password"
+            flash[:errors] = ["Please enter correct username and password"]
             redirect_to login_path
         end
     end
 
     def destroy
-        session.delete :name
+      logout_user
     end
 
-
-    private
-
-    def require_login
-        return head(:forbidden) unless session.include? :name
-    end
 end

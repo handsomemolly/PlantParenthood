@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :require_login
   skip_before_action :require_login, only: [:new, :create]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:create]
+  # skip_before_action :fetch_user, only: [:new, :create]
 
   def index
     @sitters = User.sitters
@@ -16,6 +16,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    login_user(@user.id)
+
     if @user.valid?
       session[:user_id] = @user.id
       redirect_to home_path 
@@ -44,11 +46,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :experience, :location, :password)
   end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
+  # def set_user
+  #   @user = User.find(params[:id])
+  # end
 
-  def require_login
-    redirect_to login_path unless session.include? :name
-  end
 end

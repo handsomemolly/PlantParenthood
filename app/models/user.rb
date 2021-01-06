@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :bookings, :foreign_key => 'sitter_id'
   has_secure_password
 
-  def sitters
+  def self.sitters
     User.all.map {|user| user.user_plants.length == 0 || user.user_plants == nil }
   end
 end
