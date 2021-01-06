@@ -3,14 +3,14 @@
 <br>
 <%= @user.location %>
 <br>
-<% if @user.user_plants.count == 0 %>
+<% if @user.plants.count == 0 %>
   <%= "No plants in your collection yet. Add a plant below!" %>
 
   <% else %>
     <%= "Plants in your collection:" %>
-    <%= @user.user_plants.each do |p|%>
+    <% @user.plants.each do |p|%>
       <%= "#{p.name} (#{p.latin_name})" %>
-      Type: <%= p.type %>
+      Type: <%= p.plant_type %>
       Needs: <%= p.difficulty %>
     <% end %>
 
