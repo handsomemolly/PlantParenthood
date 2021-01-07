@@ -9,6 +9,7 @@ class ListingsController < ApplicationController
 
     def new
         @listing = Listing.new
+        @parents = User.parents
     end
 
     def create

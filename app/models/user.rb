@@ -6,7 +6,11 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.sitters
-    User.all.map {|user| user.user_plants.length == 0 || user.user_plants == nil }
+    User.all.map {|user| user if user.user_plants.length == 0 || user.user_plants == nil }
+  end
+
+  def self.parents
+    User.all.map {|user| user if user.plants.length != 0}
   end
 
   def convert_experience
