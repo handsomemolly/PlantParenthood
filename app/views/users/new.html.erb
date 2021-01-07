@@ -1,2 +1,7 @@
+<% if flash[:errors] %>
+    <% flash[:errors].each do |errors| %>
+        <p> <%= errors %> </p>
+    <% end %>
+<% end %>
 
 <%= render 'form' %>

@@ -1,9 +1,8 @@
 class Listing < ApplicationRecord
   belongs_to :parent, :class_name => "User"
-  has_one :booking 
+  has_one :booking
 
   def total_compensation
-    byebug
     "$#{self.compensation * self.length_of_stay} total"
   end
 

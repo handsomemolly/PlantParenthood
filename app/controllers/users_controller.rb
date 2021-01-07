@@ -17,12 +17,12 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     login_user(@user.id)
-
     if @user.valid?
       session[:user_id] = @user.id
       redirect_to home_path 
     else
-      flash[:alert] = ["Passwords do not match. Please try again", "User already exists with that name."]
+      flash[:errors] = @user.errors.full_messages
+      # flash[:alert] = ["Passwords do not match. Please try again", "User already exists with that name."]
       redirect_to root_path
     end
   end
