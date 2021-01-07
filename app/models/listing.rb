@@ -3,6 +3,7 @@ class Listing < ApplicationRecord
   has_one :booking 
 
   def total_compensation
+    byebug
     "$#{self.compensation * self.length_of_stay} total"
   end
 

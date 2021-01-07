@@ -22,10 +22,11 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to home_path 
     else
-      flash[:alert] = "Passwords do not match. Please try again"
+      flash[:alert] = ["Passwords do not match. Please try again", "User already exists with that name."]
       redirect_to root_path
     end
   end
+  
   
   def edit
   end

@@ -6,7 +6,12 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.create(note_params)
-    redirect_to @user
+    if @note.valid?
+      redirect_to @user
+    else 
+      flash[:errors] = @note.errors.full_messages
+      redirect_to new_note_path
+    end
   end
 
   private

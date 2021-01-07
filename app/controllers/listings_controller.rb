@@ -15,7 +15,8 @@ class ListingsController < ApplicationController
 
     def create
       @listing = Listing.create(listing_params)
-      redirect_to listing_path
+    
+      redirect_to @listing
     end
 
     def book
@@ -27,7 +28,7 @@ class ListingsController < ApplicationController
     private
 
     def listing_params
-        params.require(:listing).permit(:user_id, :length_of_stay, :location)
+        params.require(:listing).permit(:parent_id, :length_of_stay, :location, :compensation)
     end
 
 

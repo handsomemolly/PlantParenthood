@@ -5,6 +5,11 @@ class User < ApplicationRecord
   has_many :bookings, :foreign_key => 'sitter_id'
   has_secure_password
 
+  validates :name, uniqueness: true
+  # validates :password, length: {minimum: 5}
+
+  
+
   def self.sitters
     User.all.filter {|user| user.plants.length == 0 || user.plants == nil }
   end

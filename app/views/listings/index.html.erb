@@ -1,0 +1,11 @@
+<h2>All Listings </h2>
+
+<% @listings.each do |listing| %>
+   <p>
+        Plant Parent: <%= link_to "#{listing.parent.name}", user_path(listing.parent) %>
+        <br>
+        Location: <%= listing.location %>
+        <br>
+        Length of Stay: <%= listing.length_of_stay %> days
+   </p>
+<% end %>
