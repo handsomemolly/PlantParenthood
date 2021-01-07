@@ -10,6 +10,7 @@ class ListingsController < ApplicationController
 
     def new
         @listing = Listing.new
+        @cities = City.all
         @parents = User.parents
     end
 
@@ -27,7 +28,7 @@ class ListingsController < ApplicationController
     private
 
     def listing_params
-        params.require(:listing).permit(:user_id, :length_of_stay, :location)
+        params.require(:listing).permit(:parent_id, :city_id, :length_of_stay, :compensation)
     end
 
 

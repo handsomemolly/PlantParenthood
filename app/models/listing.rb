@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :parent, :class_name => "User"
   has_one :booking 
+  has_one :city
 
   def total_compensation
     "$#{self.compensation * self.length_of_stay} total"
@@ -17,5 +18,9 @@ class Listing < ApplicationRecord
 
   def self.sort_by_duration
     Listing.all.sort_by {|listing| listing.length_of_stay}
+  end
+
+  def self.filter_by_location
+    Listing.all.filter {|listing| listing.location == @user.location }
   end
 end

@@ -6,7 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#12 cities
+sd = City.create(name: "San Diego")
+sm = City.create(name: "Santa Monica") 
+fres = City.create(name: "Fresno")
+hay = City.create(name: "Hayward")
+sea = City.create(name: "Seattle")
+gig = City.create(name: "Gig Harbor")
+mnr = City.create(name: "Monroe")
+sanjo = City.create(name: "San Jose")
+sf = City.create(name: "San Francisco")
+sono = City.create(name: "Sonoma")
+montana = City.create(name: "Glasgow")
+other = City.create(name: "-Other-")
 
+#20 plants
 p1 = Plant.create(name: "Pothos", latin_name: "Pothos", difficulty: "Easy", plant_type: "Tropical", rarity: "Common")
 p2 = Plant.create(name: "Monstera", latin_name: "Monstera Deliciosa", difficulty: "Easy", plant_type: "Tropical", rarity: "Common")
 p3 = Plant.create(name: "Spider Plant", latin_name: "Chlorophytum Comosum", difficulty: "Easy", plant_type: "Tropical", rarity: "Common")

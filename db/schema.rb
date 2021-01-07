@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_043724) do
+ActiveRecord::Schema.define(version: 2021_01_07_192931) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "listing_id", null: false
@@ -21,10 +21,16 @@ ActiveRecord::Schema.define(version: 2021_01_07_043724) do
     t.index ["sitter_id"], name: "index_bookings_on_sitter_id"
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "listings", force: :cascade do |t|
     t.integer "parent_id", null: false
     t.integer "length_of_stay"
-    t.string "location"
+    t.integer "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "compensation"
@@ -61,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_043724) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "experience"
-    t.string "location"
+    t.integer "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"

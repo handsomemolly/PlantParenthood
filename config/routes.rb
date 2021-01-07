@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cities
   root "users#new"
   post "/" => "users#create"
   get "/home" => "users#show"

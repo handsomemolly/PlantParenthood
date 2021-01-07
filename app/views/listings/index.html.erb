@@ -1,0 +1,8 @@
+<% @listings.each do |listing| %>
+  Where: <%= @listing.location %> <br>
+  How long: <%= @listing.length_of_stay %> days <br>
+  Compensation: <%= @listing.total_compensation %><br>
+  Care required: <%= @listing.care_required %><br>
+  Plant Parent: <%= @listing.parent.name %><br>
+  <%= link_to "More details", listing_path(listing) %>
+<% end %>
