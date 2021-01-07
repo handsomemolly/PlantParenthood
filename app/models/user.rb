@@ -14,6 +14,6 @@ class User < ApplicationRecord
 
   def find_note
     @note_plants = self.user_plants.filter {|user_plant| user_plant.notes != []}
-    @note_plants.map {|note_plant| note_plant.notes }
+    @note_plants.collect {|note_plant| note_plant.notes }.flatten
   end
 end
