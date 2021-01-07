@@ -6,6 +6,9 @@
     <%=f.label :length_of_stay %>
     <%=f.number_field :length_of_stay %>
 
+    <%= f.label :compensation %>
+    <%= f.text_field :compensation %>
+
     <%=f.collection_select :parent_id, @parents, :id, :name, inclue_hidden: false %>
 
     <%=f.submit "Create Listing" %>

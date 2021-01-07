@@ -13,13 +13,7 @@ class User < ApplicationRecord
     User.all.map {|user| user if user.plants.length != 0}
   end
 
-<<<<<<< HEAD
-  def find_note
-    @note_plants = self.user_plants.filter {|user_plant| user_plant.notes != []}
-    @note_plants.collect {|note_plant| note_plant.notes }.flatten
-=======
   def convert_experience
->>>>>>> 4f2d9e606b41cd88ac4d6c8e496b539ff8ef36d7
   end
 
 
