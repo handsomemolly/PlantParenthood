@@ -10,4 +10,12 @@ class Listing < ApplicationRecord
     difficulties = self.parent.plants.map {|p| p.difficulty }
     difficulties.any?("Advanced") ? "Advanced" : difficulties.max
   end
+
+  def self.sort_by_compensation
+    Listing.all.sort_by {|listing| listing.compensation }.reverse!
+  end
+
+  def self.sort_by_duration
+    Listing.all.sort_by {|listing| listing.length_of_stay}
+  end
 end
