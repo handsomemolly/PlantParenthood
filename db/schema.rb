@@ -10,24 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_06_004053) do
+ActiveRecord::Schema.define(version: 2021_01_06_233121) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "listing_id", null: false
-    t.integer "user_id", null: false
+    t.integer "sitter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["listing_id"], name: "index_bookings_on_listing_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["sitter_id"], name: "index_bookings_on_sitter_id"
   end
 
   create_table "listings", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "parent_id", null: false
     t.integer "length_of_stay"
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_listings_on_user_id"
+    t.index ["parent_id"], name: "index_listings_on_parent_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 2021_01_06_004053) do
   end
 
   add_foreign_key "bookings", "listings"
-  add_foreign_key "bookings", "users"
-  add_foreign_key "listings", "users"
+  add_foreign_key "bookings", "users", column: "sitter_id"
+  add_foreign_key "listings", "users", column: "parent_id"
   add_foreign_key "notes", "user_plants"
   add_foreign_key "user_plants", "plants"
   add_foreign_key "user_plants", "users"
