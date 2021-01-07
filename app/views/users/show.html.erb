@@ -2,8 +2,15 @@
 <h4><%= @user.experience %></h4>
 <h5><%= @user.location %></h5>
 <br>
+<%#= if @user.bookings %>
+Upcoming bookings:
+  <%# @user.bookings.each do |b| %>
+    <%#= link_to "#{b.listing.parent.name}", listing_path %> | <%#= b.listing.length_of_stay%> days (<%#= b.listing.total_compensation%>)
+  <%# end %>
+<%# end %>
+<br>
 <% if @user.plants.count == 0 %>
-  <%= "No plants in your collection yet. Add a plant below!" %>
+  <%= "No plants in your collection yet. Add a plant below to be a parent!" %>
 
   <% else %>
   <div>

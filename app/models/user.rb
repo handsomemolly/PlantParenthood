@@ -6,10 +6,12 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.sitters
+    #need to refactor 
     User.all.map {|user| user if user.user_plants.length == 0 || user.user_plants == nil }
   end
 
   def self.parents
+    #need to refactor
     User.all.map {|user| user if user.plants.length != 0}
   end
 

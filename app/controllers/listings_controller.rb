@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
     end
 
     def show
+      @listing = Listing.find(params[:id])
     end
 
     def new
@@ -13,9 +14,15 @@ class ListingsController < ApplicationController
     end
 
     def create
+      @listing = Listing.create(listing_params)
+      redirect_to @listing 
     end
 
-
+    def book
+      @listing = Listing.find(params[:id])
+      Booking.create(listing_id: @listing.id, sitter_id: @user.id)
+      redirect_to @user
+    end
 
     private
 

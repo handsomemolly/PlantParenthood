@@ -1,0 +1,31 @@
+<h3><%= @listing.parent.name %>'s plants need your help!</h3>
+<br>
+Where: <%= @listing.location %> <br>
+How long: <%= @listing.length_of_stay %> days <br>
+Compensation: <%= @listing.total_compensation %><br>
+<br>
+Here are the plants you will be caring for:
+(<%= @listing.parent.plants.count %> plants total)
+<br>
+<% @listing.parent.plants.each do |p|%>
+  <p>
+    <%= "#{p.name} (#{p.latin_name})" %>
+    <br>
+    Type: <%= p.plant_type %>
+    <br>
+    Needs: <%= p.difficulty %>
+    <br>
+    <% if p.find_note %>
+        <% p.find_note.each do |n| %>
+            <i><%= n.add_care %></i>
+        <% end %>
+      <% end %>
+  </p>
+<% end %>
+<br>
+<br>
+<%= if @listing.booking %>
+  <i><%= "Booked" %></i>
+  <% else %>
+    <%= button_to "Book this listing", book_listing_path, method: :post %>
+<% end %>
