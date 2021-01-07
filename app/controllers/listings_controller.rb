@@ -15,7 +15,7 @@ class ListingsController < ApplicationController
 
     def create
       @listing = Listing.create(listing_params)
-      redirect_to @listing 
+      redirect_to listing_path
     end
 
     def book

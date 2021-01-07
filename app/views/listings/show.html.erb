@@ -3,6 +3,7 @@
 Where: <%= @listing.location %> <br>
 How long: <%= @listing.length_of_stay %> days <br>
 Compensation: <%= @listing.total_compensation %><br>
+Care required: <%= @listing.care_required %>
 <br>
 Here are the plants you will be caring for:
 (<%= @listing.parent.plants.count %> plants total)
@@ -24,7 +25,7 @@ Here are the plants you will be caring for:
 <% end %>
 <br>
 <br>
-<%= if @listing.booking %>
+<% if @listing.booking %>
   <i><%= "Booked" %></i>
   <% else %>
     <%= button_to "Book this listing", book_listing_path, method: :post %>
