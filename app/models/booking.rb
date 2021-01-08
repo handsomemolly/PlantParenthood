@@ -3,10 +3,12 @@ class Booking < ApplicationRecord
   belongs_to :sitter, :class_name => "User"
 
   # validates_uniqueness_of :sitter_id, scope: [:listing_id]
-  validates :current_user
+  validate :sitter_is_parent
 
-  def validate
-    if(self.sitter_id == @listing.parent_id)
-      errors.add()
+  def sitter_is_parent
+    byebug
+    if self.sitter_id == @booking.listing.parent_id
+      errors.add(:sitter_id, "You're the one going away!")
+    end
   end
 end
