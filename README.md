@@ -8,7 +8,9 @@ Here at PlantParenthood, you simply sign up, complete your profile by adding the
 
 You can also sign up with the intention of simply being a sitter. Skip the step where you add plants to your profile, and head straight to the listings section. There you can browse all the listings available, and narrow down your search using the provided options.
 
-:herb::herb: Leave your plants in green hands. :herb::herb:
+<center><p align = "center"> :sprout::sprout::sprout: </p> </center>
+<center> Leave your plants in green hands. </center>
+<center><p align = "center"> :sprout::sprout::sprout: </p> </center>
 
 
 ******
