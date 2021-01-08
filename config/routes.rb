@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :cities
+  # resources :cities
   root "users#new"
   post "/" => "users#create"
   get "/home" => "users#show", as: "home"
   
   # resources :bookings
   resources :listings
-  resources :notes
+  resources :notes, only: [:new, :create]
   resources :user_plants, only: [:new, :create]
   resources :users
 
@@ -15,5 +15,4 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy", as: "log_out"
 
   post "/listing/:id/book", to: "listings#book", as: "book_listing"
-  # get "/listing/:id", to: "listings#show", as: "listing"
 end

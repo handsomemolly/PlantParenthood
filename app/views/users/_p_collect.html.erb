@@ -1,17 +1,18 @@
-<p>
-  <%= "#{p.name} (#{p.latin_name})" %>
-  <br>
-  Type: <%= p.plant_type %>
-  <br>
-  Needs: <%= p.difficulty %>
-  <br>
-
-  <% if p.find_note.empty? %>
-    <%= link_to "Add a care note", new_note_path, method: :get %>
-  <% else %>
-    <% p.find_note.each do |n| %>
-      <i><%= n.add_care %></i>
-    <% end %>
-  <% end %>
-
-</p>
+ <div class="row mb-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        <%= "#{p.name} (#{p.latin_name})" %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Type: <%= p.plant_type%></li>
+        <li class="list-group-item">Needs: <%= p.difficulty%></li>
+        <% if p.find_note.empty? %>
+          <%= link_to "Add a care note", new_note_path, method: :get %>
+        <% else %>
+            <% p.find_note.each do |n| %>
+              <li class="list-group-item"><i><%= n.add_care %></i></li>
+            <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
