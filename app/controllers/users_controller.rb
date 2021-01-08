@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @cities = City.all
   end
 
   def show
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     login_user(@user.id)
-
     if @user.valid?
       session[:user_id] = @user.id
       redirect_to home_path 

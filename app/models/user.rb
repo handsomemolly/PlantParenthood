@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :plants, through: :user_plants
   has_many :listings, :foreign_key => 'parent_id'
   has_many :bookings, :foreign_key => 'sitter_id'
-  has_one :city
+  belongs_to :city
   has_secure_password
 
   def self.sitters
