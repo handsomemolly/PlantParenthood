@@ -52,6 +52,6 @@ require 'faker'
 # end
 
 
-10.times do 
-  Listing.create(parent_id: User.parents.sample.id, length_of_stay: [4, 5, 6, 7, 3].sample, city_id: City.all.sample.id, compensation: [20, 25, 30, 40, 50].sample)
-end
+# 10.times do 
+#   Listing.create(parent_id: User.parents.sample.id, length_of_stay: [4, 5, 6, 7, 3].sample, city_id: City.all.sample.id, compensation: [20, 25, 30, 40, 50].sample)
+# end
