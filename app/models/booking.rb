@@ -7,7 +7,7 @@ class Booking < ApplicationRecord
 
   def sitter_is_parent
     if self.sitter_id == self.listing.parent_id
-      errors.add(:sitter_id, "can't sit their own plants!")
+      errors.add(:sitter_id, "error - can't book your own listing!")
     end
   end
 end
