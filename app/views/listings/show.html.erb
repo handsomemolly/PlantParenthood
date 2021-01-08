@@ -35,4 +35,6 @@ Here are the plants you will be caring for:
   <i><%= "Booked" %></i>
   <% else %>
     <%= button_to "Book this listing", book_listing_path, method: :post %>
+    <br>
+    <%= button_to "Back to listings", listings_path, method: :get%>
 <% end %>
