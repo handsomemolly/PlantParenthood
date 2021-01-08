@@ -1,6 +1,6 @@
 # README
 
-:herb: Welcome to PlantParenthood! :herb:
+Welcome to PlantParenthood! :herb:
 
 Ever wanted to go on a vacation but don't because you're too worried about your plants not being properly cared for?? Never again!
 
@@ -8,9 +8,9 @@ Here at PlantParenthood, you simply sign up, complete your profile by adding the
 
 You can also sign up with the intention of simply being a sitter. Skip the step where you add plants to your profile, and head straight to the listings section. There you can browse all the listings available, and narrow down your search using the provided options.
 
-<center><p align = "center"> :sprout::sprout::sprout: </p> </center>
-<center> Leave your plants in green hands. </center>
-<center><p align = "center"> :sprout::sprout::sprout: </p> </center>
+:sprout:
+Leave your plants in green hands.
+:sprout:
 
 
 ******
