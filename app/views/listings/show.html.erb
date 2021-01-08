@@ -1,51 +1,51 @@
-<h3><%= @listing.parent.name %>'s plants need your help!</h3>
-
-<% if flash[:errors] %>
-  <% flash[:errors].each do |errors| %>
-    <p><%= errors %></p>
-    <% end %>
-  <% end %>
-<br>
-Where: <%= @listing.city.name %> <br>
-How long: <%= @listing.length_of_stay %> days <br>
-Compensation: <%= @listing.total_compensation %><br>
-Care required: <%= @listing.care_required %>
-<br>
-Here are the plants you will be caring for:
-(<%= @listing.parent.plants.count %> plants total)
-<br>
-<% @listing.display_plants.each do |p| %>
-<div class="row mb-4">
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">
-      <%= "#{p.name} (#{p.latin_name})" %>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Type: <%= p.plant_type%></li>
-      <li class="list-group-item">Needs: <%= p.difficulty%></li>
-      <% if p.find_note != [] %>
-          <% p.find_note.each do |n| %>
-            <li class="list-group-item"><%= n.add_care %></li>
-          <% end %>
+<div id="listing-show">
+  <h3><%= "#{@listing.parent.name}'s plants need your help!", class: "w-text"%></h3>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |errors| %>
+      <p><%= errors %></p>
       <% end %>
-    </ul>
-  </div>
-</div>
-<% end %>
-<br>
-<br>
-<% if @listing.booking %>
-  <i><%= "Booked" %></i>
-<% else %>
-  <%= button_to "Book this listing", book_listing_path, method: :post %>
-
-
-  <% @recommended_sitters.each do |sitter| %>
-    <div class="row">
-      <%= "#{sitter.name} | #{sitter.experience}" %>
+    <% end %>
+  <br>
+  Where: <%= @listing.city.name %> <br>
+  How long: <%= @listing.length_of_stay %> days <br>
+  Compensation: <%= @listing.total_compensation %><br>
+  Care required: <%= @listing.care_required %>
+  <br>
+  Here are the plants you will be caring for:
+  (<%= @listing.parent.plants.count %> plants total)
+  <br>
+  <% @listing.display_plants.each do |p| %>
+  <div class="row mb-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        <%= "#{p.name} (#{p.latin_name})" %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Type: <%= p.plant_type%></li>
+        <li class="list-group-item">Needs: <%= p.difficulty%></li>
+        <% if p.find_note != [] %>
+            <% p.find_note.each do |n| %>
+              <li class="list-group-item"><%= n.add_care %></li>
+            <% end %>
+        <% end %>
+      </ul>
     </div>
+  </div>
   <% end %>
+  <br>
+  <br>
+  <% if @listing.booking %>
+    <i><%= "Booked" %></i>
+  <% else %>
+    <%= button_to "Book this listing", book_listing_path, method: :post %>
 
-<% end %>
 
+    <% @recommended_sitters.each do |sitter| %>
+      <div class="row">
+        <%= "#{sitter.name} | #{sitter.experience}" %>
+      </div>
+    <% end %>
+
+  <% end %>
+</div>
 

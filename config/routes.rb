@@ -15,10 +15,5 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy", as: "log_out"
 
   post "/listing/:id/book", to: "listings#book", as: "book_listing"
-<<<<<<< HEAD
   # get "/listing/:id", to: "listings#show", as: "listing"
-=======
-
->>>>>>> origin/Methods
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

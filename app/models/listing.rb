@@ -3,8 +3,12 @@ class Listing < ApplicationRecord
   belongs_to :city
   has_one :booking 
 
+  def tc 
+    self.compensation * self.length_of_stay
+  end
+
   def total_compensation
-    "$#{self.compensation * self.length_of_stay} total"
+    "$#{self.tc} total"
   end
 
   def care_required
@@ -21,7 +25,7 @@ class Listing < ApplicationRecord
   end
 
   def self.sort_by_compensation
-    Listing.all.sort_by {|listing| listing.compensation }.reverse!
+    Listing.all.sort_by {|listing| listing.tc }.reverse!
   end
 
   def self.sort_by_duration

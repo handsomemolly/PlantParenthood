@@ -15,8 +15,10 @@
     </div>
   </div>
 
-  <% @listings.length.times do |i| %>
+  <% i = 0 %>
+  <% while i < @listings.length %>
     <%= render partial: "lcard", locals: {listing: @listings[i], listing2: @listings[i+1]}%>
+    <% i+= 2 %>
   <% end %>
 </div>
 
