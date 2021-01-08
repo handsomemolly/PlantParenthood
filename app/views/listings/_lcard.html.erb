@@ -1,0 +1,27 @@
+
+<div class="row mb-4"> 
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= listing.length_of_stay %> days</h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= listing.total_compensation %></h6>
+        <p class="card-text"><%= listing.city.name %></p>
+        <p class="card-text"><i><%= listing.care_required %></i></p>
+        <%= link_to "More details", listing_path(listing), class: "g-class"%>
+      </div>
+    </div>  
+  </div>
+  <% if listing2 %>
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= listing2.length_of_stay %> days</h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= listing2.total_compensation %></h6>
+        <p class="card-text"><%= listing2.city.name %></p>
+        <p class="card-text"><i><%= listing2.care_required %></i></p>
+        <%= link_to "More details", listing_path(listing2), class: "g-class"%>
+      </div>
+    </div>  
+  </div>
+  <% end %>
+</div>

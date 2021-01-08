@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :cities
   root "users#new"
   post "/" => "users#create"
-  get "/home" => "users#show"
+  get "/home" => "users#show", as: "home"
   
   # resources :bookings
   resources :listings

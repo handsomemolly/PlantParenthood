@@ -1,0 +1,17 @@
+<p>
+  <%= "#{p.name} (#{p.latin_name})" %>
+  <br>
+  Type: <%= p.plant_type %>
+  <br>
+  Needs: <%= p.difficulty %>
+  <br>
+
+  <% if p.find_note.empty? %>
+    <%= link_to "Add a care note", new_note_path, method: :get %>
+  <% else %>
+    <% p.find_note.each do |n| %>
+      <i><%= n.add_care %></i>
+    <% end %>
+  <% end %>
+
+</p>

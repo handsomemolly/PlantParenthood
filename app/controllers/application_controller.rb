@@ -2,11 +2,13 @@ class ApplicationController < ActionController::Base
   before_action :fetch_user
   before_action :require_login
 
+  helper_method :fetch_user
+
   def fetch_user
     @logged_in = logged_in?
     @user = User.find(current_user_id) if logged_in?
   end
-
+ 
   def require_login
     unless logged_in?
       redirect_to login_path

@@ -2,12 +2,12 @@
 <h4><%= @user.experience %></h4>
 <h5><%= @user.city.name %></h5>
 <br>
-<%#= if @user.bookings %>
+<% if @user.bookings %>
 Upcoming bookings:
-  <%# @user.bookings.each do |b| %>
-    <%#= link_to "#{b.listing.parent.name}", listing_path %> | <%#= b.listing.length_of_stay%> days (<%#= b.listing.total_compensation%>)
-  <%# end %>
-<%# end %>
+  <% @user.bookings.each do |b| %>
+    <%= link_to "#{b.listing.parent.name}", listing_path(b.listing) %> | <%= b.listing.length_of_stay%> days (<%= b.listing.total_compensation%>)
+  <% end %>
+<% end %>
 <br>
 <% if @user.plants.count == 0 %>
   <%= "No plants in your collection yet. Add a plant below to be a parent!" %>
@@ -18,23 +18,7 @@ Upcoming bookings:
   </div>
     <%= "Plants in your collection:" %>
     <% @user.plants.each do |p|%>
-      <p>
-        <%= "#{p.name} (#{p.latin_name})" %>
-        <br>
-        Type: <%= p.plant_type %>
-        <br>
-        Needs: <%= p.difficulty %>
-        <br>
-
-        <% if p.find_note.empty? %>
-          <%= link_to "Add a care note", new_note_path, method: :get %>
-        <% else %>
-          <% p.find_note.each do |n| %>
-            <i><%= n.add_care %></i>
-          <% end %>
-        <% end %>
-
-      </p>
+      <%= render partial: "p_collect", locals: {p: p} %>
     <% end %>
 
 <% end %>
@@ -42,5 +26,4 @@ Upcoming bookings:
 
 <div>
 <%= button_to "Add plants to your collection", new_user_plant_path, method: :get %>
-
-<div>
+</div>

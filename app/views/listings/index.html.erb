@@ -1,12 +1,22 @@
-<%= link_to "Sort listings by highest pay", '/listings/?sort=pay'%>
-<%= link_to "Sort listings by shortest vacation", '/listings/?sort=days'%>
-<%= link_to "Show listings in my city only", '/listings/?sort=city' %>
+<div id="listings-index">
+  <div class="row">
+    <div class="col-sm">
+    <table class="table table-warning">
+      <thead>
+      <tr>
+        <th>Sort</th>
+        <th><%= link_to "Highest pay", '/listings/?sort=pay', class: "g-class"%></th>
+        <th><%= link_to "Shortest vacation", '/listings/?sort=days', class: "g-class"%></th>
+        <th><%= link_to "My city only", '/listings/?sort=city', class: "g-class"%></th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+    </table>
+    </div>
+  </div>
 
-<% @listings.each do |listing| %>
-  Where: <%= listing.city.name %> <br>
-  How long: <%= listing.length_of_stay %> days <br>
-  Compensation: <%= listing.total_compensation %><br>
-  Care required: <%= listing.care_required %><br>
-  Plant Parent: <%= listing.parent.name %><br>
-  <%= link_to "More details", listing_path(listing) %>
-<% end %>
+  <% @listings.length.times do |i| %>
+    <%= render partial: "lcard", locals: {listing: @listings[i], listing2: @listings[i+1]}%>
+  <% end %>
+</div>
+

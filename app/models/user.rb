@@ -20,8 +20,6 @@ class User < ApplicationRecord
   end
 
   def convert_experience
-    
   end
-
 
 end
