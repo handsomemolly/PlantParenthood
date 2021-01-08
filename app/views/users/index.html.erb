@@ -1,7 +1,7 @@
 <%= @sitters.each do |sitter|%>
   <p>
     Name: <%= sitter.name %>
-    Location: <%= sitter.location %>
+    Location: <%= sitter.city.name %>
     Care level experience: <%= sitter.experience %>
   </p>
 <% end %>

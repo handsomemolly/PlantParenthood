@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @cities = City.all
   end
 
   def show
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :experience, :location, :password)
+    params.require(:user).permit(:name, :experience, :city_id, :password)
   end
 
   # def set_user

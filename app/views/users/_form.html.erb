@@ -7,8 +7,8 @@
   <%= f.password_field :password %>
   <br>  
   <br>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
+  <%= f.label :city %>
+  <%= f.collection_select :city_id, @cities, :id, :name, include_hidden: false %>
   <br>
   <br>
   <%= f.label :experience_level %>

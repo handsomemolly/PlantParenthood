@@ -1,11 +1,12 @@
-<h2>All Listings </h2>
+<%= link_to "Sort listings by highest pay", '/listings/?sort=pay'%>
+<%= link_to "Sort listings by shortest vacation", '/listings/?sort=days'%>
+<%= link_to "Show listings in my city only", '/listings/?sort=city' %>
 
 <% @listings.each do |listing| %>
-   <p>
-        Plant Parent: <%= link_to "#{listing.parent.name}", user_path(listing.parent) %>
-        <br>
-        Location: <%= listing.location %>
-        <br>
-        Length of Stay: <%= listing.length_of_stay %> days
-   </p>
+  Where: <%= listing.city.name %> <br>
+  How long: <%= listing.length_of_stay %> days <br>
+  Compensation: <%= listing.total_compensation %><br>
+  Care required: <%= listing.care_required %><br>
+  Plant Parent: <%= listing.parent.name %><br>
+  <%= link_to "More details", listing_path(listing) %>
 <% end %>
