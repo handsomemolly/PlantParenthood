@@ -7,11 +7,12 @@
       <% end %>
     <% end %>
   <br>
-  
+  <div class="green-background">
   Where: <%= @listing.city.name %> <br>
   How long: <%= @listing.length_of_stay %> days <br>
   Compensation: <%= @listing.total_compensation %><br>
   Care required: <%= @listing.care_required %>
+  </div>
   <br>
   Here are the plants you will be caring for:
   (<%= @listing.parent.plants.count %> plants total)
@@ -45,14 +46,18 @@
     <i><%= "Booked" %></i>
   <% else %>
     <%= button_to "Book this listing", book_listing_path, method: :post %>
-
+  <br>
+  <br>
+  
   <div class="w-text">
+    <div class="green-background">
   <b>Recommended Sitters: </b>
     <% @recommended_sitters.each do |sitter| %>
       <div class="row">
         <%= "#{sitter.name} | #{sitter.experience}" %>
       </div>
     <% end %>
+    </div>
   </div>
 
   <% end %>
