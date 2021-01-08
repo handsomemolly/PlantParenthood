@@ -1,4 +1,5 @@
 <div id="listing-show">
+  <div class="w-text">
   <h3><%= "#{@listing.parent.name}'s plants need your help!"%></h3>
   <% if flash[:errors] %>
     <% flash[:errors].each do |errors| %>
@@ -6,6 +7,7 @@
       <% end %>
     <% end %>
   <br>
+  
   Where: <%= @listing.city.name %> <br>
   How long: <%= @listing.length_of_stay %> days <br>
   Compensation: <%= @listing.total_compensation %><br>
@@ -13,6 +15,7 @@
   <br>
   Here are the plants you will be caring for:
   (<%= @listing.parent.plants.count %> plants total)
+  </div>
   <br>
   <% @listing.display_plants.each do |p| %>
   <div class="row mb-4">
@@ -43,12 +46,14 @@
   <% else %>
     <%= button_to "Book this listing", book_listing_path, method: :post %>
 
-
+  <div class="w-text">
+  <b>Recommended Sitters: </b>
     <% @recommended_sitters.each do |sitter| %>
       <div class="row">
         <%= "#{sitter.name} | #{sitter.experience}" %>
       </div>
     <% end %>
+    </div>
 
   <% end %>
 </div>
