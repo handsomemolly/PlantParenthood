@@ -19,7 +19,4 @@ class User < ApplicationRecord
     User.all.filter {|user| user.plants.length != 0}
   end
 
-  def convert_experience
-  end
-
 end

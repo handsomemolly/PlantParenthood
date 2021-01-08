@@ -1,9 +1,9 @@
-<h2><%= "#{@user.name}'s Profile:"%></h2>
+<h2><%= @user.name%></h2>
 <h4><%= @user.experience %></h4>
 <h5><%= @user.city.name %></h5>
 <br>
 <% if @user.bookings %>
-Upcoming bookings:
+  <%= "Upcoming bookings:" %>
   <% @user.bookings.each do |b| %>
     <%= link_to "#{b.listing.parent.name}", listing_path(b.listing) %> | <%= b.listing.length_of_stay%> days (<%= b.listing.total_compensation%>)
   <% end %>
@@ -11,16 +11,20 @@ Upcoming bookings:
 <br>
 <% if @user.plants.count == 0 %>
   <%= "No plants in your collection yet. Add a plant below to be a parent!" %>
-
-  <% else %>
+<% else %>
+  <br>
+  <br>
   <div>
     <%= button_to "Create a Listing", new_listing_path, method: :get %>
   </div>
+  <br>
+  <br>
     <%= "Plants in your collection:" %>
-    <% @user.plants.each do |p|%>
-      <%= render partial: "p_collect", locals: {p: p} %>
+    <% i = 0 %>
+    <% while i < @user.plants.length %>
+      <%= render partial: "p_collect", locals: {p: @user.plants[i], p2: @user.plants[i+1]} %>
+      <% i+= 2%>
     <% end %>
-
 <% end %>
 <br>
 
