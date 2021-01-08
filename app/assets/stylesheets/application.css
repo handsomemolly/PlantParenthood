@@ -13,8 +13,4 @@
  *= require_tree .
  *= require_self
  */
- body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
- }
+ 

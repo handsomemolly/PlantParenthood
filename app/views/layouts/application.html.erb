@@ -7,23 +7,26 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <!-- bootstrap link href -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   </head>
 
-  <body>
-    <% if @logged_in %>
-      <%= button_to "Log out", log_out_path, method: :delete %>
-    <% else %>
-      <%= link_to "Log in", login_path%>
-      <%= link_to "Sign Up", new_user_path%>
-    <% end %>
-    <br>
-    <br>
-    <% if flash[:errors] %>
-      <% flash[:errors].each do |error|%>
-        <%= error %>
+  <div class="container"> 
+    <body>
+      <%= render "layouts/header" %>
+      <% if @logged_in %>
+        <%= button_to "Log out", log_out_path, method: :delete %>
+      <% else %>
+        <%= link_to "Log in", login_path%>
+        <%= link_to "Sign Up", new_user_path%>
       <% end %>
-    <% end %>
-    <%= yield %>
-  </body>
+      <br>
+      <br>
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |error|%>
+          <%= error %>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </body>
+  </div>
 </html>

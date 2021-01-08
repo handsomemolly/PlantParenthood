@@ -9,13 +9,14 @@ class ListingsController < ApplicationController
         when "days"
           @listings = Listing.sort_by_duration
         when "city"
-          @listings = Listing.filter_by_location
+          @listings = Listing.filter_by_location(@user)
         end
       end
     end
 
     def show
       @listing = Listing.find(params[:id])
+      @recommended_sitters = @listing.recommend_sitters
     end
 
     def new
@@ -44,7 +45,7 @@ class ListingsController < ApplicationController
     end
 
     def index_my_city
-      @listings = Listing.filter_by_location
+      @listings = Listing.filter_by_location(@user)
     end
 
     private

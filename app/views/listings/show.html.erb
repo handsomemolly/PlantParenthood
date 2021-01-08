@@ -8,25 +8,38 @@ Care required: <%= @listing.care_required %>
 Here are the plants you will be caring for:
 (<%= @listing.parent.plants.count %> plants total)
 <br>
-<% @listing.parent.plants.each do |p|%>
-  <p>
-    <%= "#{p.name} (#{p.latin_name})" %>
-    <br>
-    Type: <%= p.plant_type %>
-    <br>
-    Needs: <%= p.difficulty %>
-    <br>
-    <% if p.find_note %>
-        <% p.find_note.each do |n| %>
-            <i><%= n.add_care %></i>
-        <% end %>
+<% @listing.display_plants.each do |p| %>
+<div class="row mb-4">
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      <%= "#{p.name} (#{p.latin_name})" %>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Type: <%= p.plant_type%></li>
+      <li class="list-group-item">Needs: <%= p.difficulty%></li>
+      <% if p.find_note != [] %>
+          <% p.find_note.each do |n| %>
+            <li class="list-group-item"><%= n.add_care %></li>
+          <% end %>
       <% end %>
-  </p>
+    </ul>
+  </div>
+</div>
 <% end %>
 <br>
 <br>
 <% if @listing.booking %>
   <i><%= "Booked" %></i>
-  <% else %>
-    <%= button_to "Book this listing", book_listing_path, method: :post %>
+<% else %>
+  <%= button_to "Book this listing", book_listing_path, method: :post %>
+
+
+  <% @recommended_sitters.each do |sitter| %>
+    <div class="row">
+      <%= "#{sitter.name} | #{sitter.experience}" %>
+    </div>
+  <% end %>
+
 <% end %>
+
+
