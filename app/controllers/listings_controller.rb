@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
     
     def index
       @listings = Listing.all
@@ -15,7 +16,6 @@ class ListingsController < ApplicationController
     end
 
     def show
-      @listing = Listing.find(params[:id])
       @recommended_sitters = @listing.recommend_sitters
     end
 
@@ -28,6 +28,21 @@ class ListingsController < ApplicationController
     def create
       @listing = Listing.create(listing_params)
       redirect_to @listing
+    end
+
+    def edit
+      @cities = City.ordered
+      @parents = User.parents
+    end
+
+    def update
+      @listing.update(listing_params)
+      redirect_to @listing
+    end
+
+    def destroy
+      @listing.delete
+      redirect_to @user 
     end
 
     def book
@@ -59,7 +74,8 @@ class ListingsController < ApplicationController
         params.require(:listing).permit(:parent_id, :city_id, :length_of_stay, :compensation)
     end
 
-
-
+    def set_listing
+      @listing = Listing.find(params[:id])
+    end
 
 end

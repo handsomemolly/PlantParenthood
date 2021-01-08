@@ -1,5 +1,5 @@
 <div id="listing-show">
-  <h3><%= "#{@listing.parent.name}'s plants need your help!", class: "w-text"%></h3>
+  <h3><%= "#{@listing.parent.name}'s plants need your help!"%></h3>
   <% if flash[:errors] %>
     <% flash[:errors].each do |errors| %>
       <p><%= errors %></p>
@@ -34,6 +34,10 @@
   <% end %>
   <br>
   <br>
+  <% if @listing.parent == fetch_user %>
+    <%= link_to "Edit listing", edit_listing_path(@listing) %>
+    <%= button_to "Delete", @listing, method: :delete %>
+  <% end %>
   <% if @listing.booking %>
     <i><%= "Booked" %></i>
   <% else %>
