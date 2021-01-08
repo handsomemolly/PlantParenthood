@@ -38,7 +38,7 @@
   <br>
   <br>
   <% if @listing.parent == fetch_user %>
-    <%= link_to "Edit listing", edit_listing_path(@listing) %>
+    <%= link_to "Edit listing", edit_listing_path(@listing), class: "g-class"%>
     <%= button_to "Delete", @listing, method: :delete %>
   <% end %>
   <% if @listing.booking %>
