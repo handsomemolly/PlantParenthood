@@ -1,5 +1,10 @@
 <h3><%= @listing.parent.name %>'s plants need your help!</h3>
 
+<% if flash[:errors] %>
+  <% flash[:errors].each do |errors| %>
+    <p><%= errors %></p>
+    <% end %>
+  <% end %>
 <br>
 Where: <%= @listing.location %> <br>
 How long: <%= @listing.length_of_stay %> days <br>

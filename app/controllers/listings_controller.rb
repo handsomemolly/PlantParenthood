@@ -21,11 +21,11 @@ class ListingsController < ApplicationController
 
     def book
       @listing = Listing.find(params[:id])
-      Booking.create(listing_id: @listing.id, sitter_id: @user.id)
+      @booking = Booking.create(listing_id: @listing.id, sitter_id: @user.id)
       if @booking.valid?
       redirect_to @user
       else  
-        flash[:erreors] = @booking.errors.full_messages
+        flash[:errors] = @booking.errors.full_messages
         redirect_to @listing
       end
     end

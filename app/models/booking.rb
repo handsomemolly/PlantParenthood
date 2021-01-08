@@ -6,9 +6,8 @@ class Booking < ApplicationRecord
   validate :sitter_is_parent
 
   def sitter_is_parent
-    byebug
-    if self.sitter_id == @booking.listing.parent_id
-      errors.add(:sitter_id, "You're the one going away!")
+    if self.sitter_id == self.listing.parent_id
+      errors.add(:sitter_id, "can't sit their own plants!")
     end
   end
 end
